@@ -1,0 +1,27 @@
+{"intents":[
+  { "tag": "saudacao",
+    "patterns":["Ola","Opa","Oi","tudo bem"],
+    "responses": ["Oi","Olá","Opa"]
+  },
+  { "tag": "despedida",
+    "patterns":["valeu","tchau","Obrigado","tks"],
+    "responses": ["Até breve","Falou"]
+  },
+  { "tag": "Conteudo",
+    "patterns":["Aonde estão os slides","Aonde está o conteúdo da disciplina?"],
+    "responses": ["O conteudo da disciplina de TCC1 se encontra nos slides do moodle."]
+  },
+  { "tag": "dinamica",
+    "patterns":[""],
+    "responses": [""]
+  },
+  { "tag": "aplicacao",
+    "patterns":[""],
+    "responses": [""]
+  },
+  { "tag": "professor",
+    "patterns":[""],
+    "responses": [""]
+  }
+]
+}
