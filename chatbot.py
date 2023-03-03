@@ -1,9 +1,3 @@
-# this class was based on Jere Xu article available at:
-# https://towardsdatascience.com/how-to-create-a-chatbot-with-python-deep-learning-in-less-than-an-hour-56a063bdfc44
-# thanks to Jere Xu ;)
-
-
-
 import numpy as np
 import json
 import pickle
@@ -13,6 +7,8 @@ from nltk.stem import WordNetLemmatizer
 
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
+from nltk.parse import DependencyGraph
+from nltk.parse import malt
 from tensorflow.keras.optimizers import SGD
 
 
@@ -42,12 +38,15 @@ class ChatBot:
                 self.words.extend(w)
                 # adding documents
                 self.documents.append((w, intent['tag']))
+                
+
 
                 # adding classes to our class list
                 if intent['tag'] not in self.classes:
                     self.classes.append(intent['tag'])
 
-        self.words = [self.lemmatizer.lemmatize(w.lower()) for w in self.words if w not in self.ignore_words]
+        self.words = [self.lemmatizer.lemmatize(w.lower())
+                       for w in self.words if w not in self.ignore_words]
         self.words = sorted(list(set(self.words)))
 
         self.classes = sorted(list(set(self.classes)))
@@ -98,7 +97,7 @@ class ChatBot:
         model.add(Dense(len(train_y[0]), activation='softmax'))
 
         # Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
-        sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+        sgd = SGD(learnlring_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
         # fitting and saving the model
@@ -164,4 +163,5 @@ class ChatBot:
     def chatbot_response(self, msg):
         ints = self.predict_class(msg, self.model)
         res = self.getResponse(ints, self.intents)
-        return res, ints
+        
+        return res

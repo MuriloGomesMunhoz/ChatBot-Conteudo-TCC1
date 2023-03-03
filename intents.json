@@ -9,7 +9,7 @@
   },
   { "tag": "Conteudo",
     "patterns":["Aonde estão os slides","Aonde está o conteúdo da disciplina?"],
-    "responses": ["O conteudo da disciplina de TCC1 se encontra nos slides do moodle."]
+    "responses": ["O trabalho de final de curso busca exercitar as habilidades dos estudantes em desenvolver soluções que envolvam recursos computacionais e conhecimentos adquiridos na graduação, aplicando o método científico como base para a solução proposta."]
   },
   { "tag": "dinamica",
     "patterns":[""],
