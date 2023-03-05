@@ -1,56 +1,48 @@
-from tkinter import *
+import tkinter as tk
 from tkinter import scrolledtext
 from chatbot import ChatBot
+from tkinter import *
+
+
 myChatBot = ChatBot()
-
-
 myChatBot.loadModel()
 
 # myChatBot.createModel()
 
-def send(event):
-    msg = EntryBox.get("1.0",'end-1c').strip()
-    EntryBox.delete("0.0",END)
+root = tk.Tk()
+root.attributes('-zoomed', True)
+root.title("ChatBot")
 
+chat_log = scrolledtext.ScrolledText(root, width=30, height=10, font='Arial', bg="#e6e6e6")
+chat_log.insert(tk.END, "Bem Vindo(a) a aula de TCC 1\n\n")
+chat_log.insert(tk.END, "Digite sua dúvida\n\n")
+chat_log.pack(fill='both', expand=True)
+
+input_field = tk.Entry(root, bd=1, font=('Arial', 20),bg="#e6e6e6", highlightbackground="Black", width=500)
+input_field.pack()
+
+chat_log.tag_configure("user", foreground="#442265", font=("Verdana", 12))
+
+def send_message(event):
+    # Obtém a mensagem digitada pelo usuário
+    msg = input_field.get()
     if msg != '':
-        ChatLog.config(state=NORMAL)
-        ChatLog.insert(END, "You: " + msg + '\n\n')
-        ChatLog.config(foreground="#442265", font=("Verdana", 12 ))
-       
+        # Exibe a mensagem do usuário no chat
+        chat_log.config(state=NORMAL)
+        chat_log.insert(tk.END, "Você: " + msg + '\n\n', "user")
+        chat_log.config(state=DISABLED)
+
+        # Obtém a resposta do chatbot e exibe no chatf
         res = myChatBot.chatbot_response(msg)
-        ChatLog.insert(END, "Bot: " + str(res) + '\n\n')
-        ChatLog.config(state=DISABLED)
-        ChatLog.yview(END)
+        chat_log.config(state=NORMAL)
+        chat_log.tag_config("message", font=("Verdana", 12))
+        chat_log.insert(tk.END, "Você: " + res + '\n\n', "message")
+        chat_log.config(state=DISABLED)
+        chat_log.yview(END)
 
+        # Limpa a caixa de entrada de texto
+        input_field.delete(0, tk.END)
 
-base = Tk()
-base.title("Chat Bot")
-base.geometry("400x500")
-base.resizable(width=FALSE, height=FALSE)
+input_field.bind("<Return>", send_message)
 
-#Create Chat window
-ChatLog = Text(base, bd=0, bg="white", height="8", width="50", font="Arial",)
-
-ChatLog.config(state=DISABLED)
-
-#Bind scrollbar to Chat window
-scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="heart")
-ChatLog['yscrollcommand'] = scrollbar.set
-
-#Create Button to send message
-SendButton = Button(base, font=("Verdana",12,'bold'), text="Send", width="12", height=5,
-                    bd=0, bg="#32de97", activebackground="#3c9d9b",fg='#ffffff',
-                    command= send )
-
-#Create the box to enter message
-EntryBox = Text(base, bd=0, bg="white",width="29", height="5", font="Arial")
-#EntryBox.bind("<Return>", send)
-
-
-#Place all components on the screen
-scrollbar.place(x=376,y=6, height=386)
-ChatLog.place(x=6,y=6, height=386, width=370)
-EntryBox.place(x=128, y=401, height=90, width=265)
-SendButton.place(x=6, y=401, height=90)
-
-base.mainloop()
+root.mainloop()

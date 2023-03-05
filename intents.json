@@ -1,27 +1,35 @@
 {"intents":[
   { "tag": "saudacao",
-    "patterns":["Ola","Opa","Oi","tudo bem"],
-    "responses": ["Oi","Olá","Opa"]
+  "patterns":["Ola","Opa","Oi","tudo bem"],
+  "responses": ["Oi","Olá","Opa"]
   },
   { "tag": "despedida",
-    "patterns":["valeu","tchau","Obrigado","tks"],
-    "responses": ["Até breve","Falou"]
+  "patterns":["valeu","tchau","Obrigado","tks"],
+  "responses": ["Até breve","Falou"]
   },
   { "tag": "Conteudo",
-    "patterns":["Aonde estão os slides","Aonde está o conteúdo da disciplina?"],
-    "responses": ["O trabalho de final de curso busca exercitar as habilidades dos estudantes em desenvolver soluções que envolvam recursos computacionais e conhecimentos adquiridos na graduação, aplicando o método científico como base para a solução proposta."]
+  "patterns":["Aonde estão os slides","Aonde está o conteúdo da disciplina?"],
+  "responses": ["O conteudo da disciplina de TCC1 se encontra nos slides do moodle."]
   },
-  { "tag": "dinamica",
-    "patterns":[""],
-    "responses": [""]
+  { "tag": "grupo",
+  "patterns":["Grupos"],
+  "responses": ["Os grupos devem buscar ter 4 integrantes"]
+  },
+  { "tag": "tema",
+  "patterns":["Temas"],
+  "responses": ["Os orientadores aconselham alterações ou aperfeiçoamentos na delimitação do escopo ou da metodologia a ser empregada."]
+  },
+  { "tag": "orientador",
+  "patterns":["Orientador"],
+  "responses": ["Pode ser de outros departamentos.","conduzir o desenvolvimento do trabalho (recomenda-se pelo menos 1h semanal de reunião com o grupo e que estas reuniões sejam evidenciadas pelo grupo)"]
   },
   { "tag": "aplicacao",
-    "patterns":[""],
-    "responses": [""]
+  "patterns":["avaliação"],
+  "responses": ["no final de cada semestre serão avaliados por uma banca de professores.","A banca avaliará a monografia e a solução implementada com base em um conjunto de premissas de avaliação determinadas e conhecidas tanto pelos professores quanto pelos alunos."]
   },
-  { "tag": "professor",
-    "patterns":[""],
-    "responses": [""]
+  { "tag": "curso",
+  "patterns":["curso"],
+  "responses": ["A solução proposta deve ter como base o método científico","O trabalho de final de curso tem como objetivo principal exercitar a capacidade dos estudantes em desenvolver uma solução para uma questão que envolva recursos computacionais e que utilize os conhecimentos acumulados durante o curso de graduação"]
   }
-]
-}
+  ]
+  }
